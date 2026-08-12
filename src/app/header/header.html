@@ -1,0 +1,48 @@
+<header>
+  <p class="logo">BOUTIQUE <span class="log">DE FLEURS</span></p>
+
+  <div class="header-action">
+    <button class="icon-btn">
+      <img src="/devoir angular/search.svg" alt="search" />
+     
+    
+    </button>
+
+    
+
+   
+  </div>
+       
+
+
+
+  
+   <!-- Bouton Burger avec événement au clic -->
+    <button class="mobile-nav-toggle" (click)="toggleMenu()" aria-label="Toggle navigation" >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Fond sombre (Overlay) : ferme le menu si on clique dessus -->
+  <div class="menu-overlay" [class.active]="isMenuOpen" (click)="closeMenu()" ></div>
+
+
+
+  <nav class="nav-menu" [class.active]="isMenuOpen" >
+    <ul class="btn-y"> 
+      <li><a class="kossi" href="#s'inscrire" (click)="closeMenu()" >S'inscrire</a></li>
+      <li><a href="#se connecter" (click)="closeMenu()" >Se connecter</a></li>
+      <li><a href="#contact" (click)="closeMenu()" >Contact</a></li>
+      
+
+
+    </ul>
+  </nav>
+
+  <button class="icon-btn">
+     <img src="/devoir angular/panier.svg" alt="">
+  </button>
+
+  
+</header>

@@ -1,0 +1,210 @@
+
+
+
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+
+
+
+}
+
+
+header{
+   
+    display: flex;
+    justify-content: space-between;
+   
+    background-color: rgba(255, 255, 255, 0.877);
+    padding: 15px;
+    align-items: center;
+
+   
+width: 100%;
+
+
+   
+    
+}
+
+
+.logo{
+    color: rgba(255, 145, 0, 0.918);
+   
+}
+
+
+.log{
+    color: rgb(18, 5, 68);
+    
+}
+
+
+
+
+/* Alignement et espacement du conteneur des boutons */
+.header-actions {
+  display: flex;             /* Aligne les boutons côte à côte sur une ligne horizontale */
+  align-items: center;       /* Centre verticalement les boutons entre eux */
+  gap: 1rem;                 /* Ajoute un espace constant (16px) entre chaque bouton */
+}
+
+/* Style principal des boutons de navigation */
+.icon-btn {
+  /* --- LES RÈGLES QUI ONT RETIRÉ LE CARRÉ --- */
+  background: none;                          /* Supprime le fond gris ou blanc par défaut du bouton <button> */
+  border: none;                              /* Supprime la bordure noire/grise tracée par défaut autour du <button> */
+  outline: none;                             /* Supprime le rectangle de sélection (focus) qui apparaît au clic */
+  -webkit-tap-highlight-color: transparent;  /* Supprime le carré/rectangle bleu/gris qui clignote sur mobile iOS/Android au toucher */
+   
+  /* --- STYLE ET DISPOSITION INTERNE --- */
+  cursor: pointer;                           /* Transforme le curseur de la souris en main interactive au survol */
+  padding: 8px;                              /* Ajoute de l'espace interne autour de l'icône pour agrandir la zone cliquable */
+  display: flex;                             /* Utilise flexbox pour centrer le contenu interne (l'image SVG) */
+  justify-content: center;                   /* Centre l'image SVG horizontalement dans le bouton */
+  align-items: center;                       /* Centre l'image SVG verticalement dans le bouton */
+  color: #333333;                            /* Définit la couleur du texte ou des icônes vectorielles en gris foncé */
+  transition: opacity 0.2s ease;             /* Anime la variation d'opacité en 0.2 seconde lors du survol */
+}
+
+/* Style de l'image (SVG) située à l'intérieur du bouton */
+.icon-btn img {
+   
+  height: 22px;              /* Fixe la hauteur exacte de l'icône à 22 pixels */
+  width: 22px;               /* Fixe la largeur exacte de l'icône à 22 pixels */
+  display: block;            /* Retire l'espace vide sous l'image propre aux éléments inline */
+  pointer-events: none;      /* Empêche l'image de capturer le clic pour que ce soit le bouton <button> qui réagisse */
+}
+
+/* Effet au survol du bouton */
+.icon-btn:hover {
+  opacity: 0.7;              /* Rend le bouton légèrement transparent (70%) quand la souris passe dessus pour l'effet visuel */
+}
+
+
+
+
+
+
+
+
+
+
+  /* Affiche l'élément bouton dans la liste déroulante mobile */
+  .mobile-btn-item {
+    display: block;
+    margin-top: 15px;
+  }
+
+  /* Affiche le bouton burger */
+  .mobile-nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .mobile-nav-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    border-radius: 2px;
+  }
+
+  /* Le Menu en mode déroulant cachè par défaut */
+  .nav-menu {
+    position: fixed;
+    top: 60px; /* S'affiche juste en dessous du header */
+    left: 0;
+    right: 0;
+    background-color: rgba(235, 219, 209, 0.979); /* Fond sombre semi-transparent */
+    padding: 20px;
+    border-radius: 19px;
+    height: 80vh;
+    
+  
+    /* Animation de disparition/apparition */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+  }
+
+
+  .nav-menu ul {
+    display: flex;
+    flex-direction: column; /* Alignement vertical pour mobile */
+    align-items: center;
+    gap: 45px;
+    list-style: none;
+    padding: 35%;
+    
+    
+   
+   
+  }
+  .nav-menu a{
+    text-decoration: none;
+  color: black;
+   
+
+  }
+
+  .nav-menu li{
+ border: 2px solid rgb(255, 123, 0);
+ background-color: rgba(226, 125, 43, 0.568);
+ border-radius: 10%;
+ padding: 2px 1px ;
+ 
+
+  }
+
+
+  /* CLASSE ACTIVE (appliquée au clic en Angular) */
+  .nav-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Glisse doucement vers le bas */
+  }
+
+
+
+
+/* --- OVERLAY (FOND SOMBRE DE HORS-MENU) --- */
+.menu-overlay {
+  display: none; /* Inactif sur grand écran */
+}
+
+@media (max-width: 768px) {
+  .menu-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Assombrit la page derrière */
+    z-index: 98; /* Place l'overlay juste en dessous du menu */
+    
+    /* Cache par défaut */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Quand le menu est ouvert */
+  .menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* Permet d'intercepter le clic */
+  }
+
+  /* Assure-toi que ton menu a un z-index plus élevé que l'overlay */
+  .nav-menu {
+    z-index: 99;
+  }
+}
